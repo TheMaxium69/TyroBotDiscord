@@ -1,0 +1,4 @@
+fr/tyrolium/maxime/bot/Main.java
+ fr.tyrolium.maxime.bot.Main
+fr/tyrolium/maxime/bot/message.java
+ fr.tyrolium.maxime.bot.message
