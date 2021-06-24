@@ -46,7 +46,7 @@ public class message extends ListenerAdapter {
         String userPapa = "363366883652796416";
         if (userEvent.equals(userPapa)){
             if (event.getMessage().getContentRaw().toLowerCase().contains("t!admin")) {
-                event.getChannel().sendMessage("oui tu est bien mon créateur maxime").queue();
+                event.getChannel().sendMessage("oui tu est bien mon createur " + userTab.getAsTag()).queue();
                 System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
