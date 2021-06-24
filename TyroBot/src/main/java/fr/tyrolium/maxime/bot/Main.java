@@ -17,6 +17,7 @@ public class Main {
         builder.build();
 
         System.out.println("Le bot est bien lance");
+
     }
 
     public static String Prefix = "t!";
