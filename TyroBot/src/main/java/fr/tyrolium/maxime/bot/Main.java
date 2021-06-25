@@ -20,5 +20,4 @@ public class Main {
 
     }
 
-    public static String Prefix = "t!";
 }

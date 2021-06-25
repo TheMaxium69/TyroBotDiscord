@@ -11,6 +11,7 @@ import javax.annotation.Nonnull;
 public class message extends ListenerAdapter {
     @Override
     public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
+        String Prefix = "t!";
         User userTab = event.getAuthor();
         String userEvent = userTab.getId();
         MessageChannel channelTab = event.getChannel();
@@ -18,38 +19,72 @@ public class message extends ListenerAdapter {
         String guildEvent = guildTab.getId();
         System.out.println(guildTab.getName() + " / " + channelTab.getName() + " / " + userTab.getAsTag() + " ----> " + event.getMessage().getContentRaw());
 
+        //Unique
+        String guildTyro = "772171741782343690";
+        String userPapa = "363366883652796416";
 
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Main.Prefix + "help")) {
-            event.getChannel().sendMessage("```[t!] help = cette command```").queue();
-            event.getChannel().sendMessage("```[t!] ping = la commade pour connaitre sont ping```").queue();
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
+            event.getChannel().sendMessage("```[t!] help = cette commande```").queue();
+            event.getChannel().sendMessage("```[t!] ping = la commade pour connaître son ping```").queue();
+            event.getChannel().sendMessage("```[t!] moi = (debug)la commade pour savoir qui tu est```").queue();
+            event.getChannel().sendMessage("```[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est```").queue();
+            event.getChannel().sendMessage("```[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est```").queue();
+            event.getChannel().sendMessage("```[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est```").queue();
+            event.getChannel().sendMessage("```[t!] debug = (debug)pour voir le debug```").queue();
             System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Main.Prefix + "ping")) {
-            event.getChannel().sendMessage("Pong ??? je suis en dev je sais pas encore faire").queue();
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "ping")) {
+            event.getChannel().sendMessage("Pong ??? je suis en dev, je sais pas encore faire").queue();
             System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "moi")) {
+            event.getChannel().sendMessage("tu est ``" + userTab.getAsTag() + "``").queue();
+            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
+
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "chan")) {
+            event.getChannel().sendMessage("tu est dans le channel ``" + channelTab.getName() + "``").queue();
+            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
+
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "serv")) {
+            event.getChannel().sendMessage("tu est dans le serveur ``" + guildTab.getName() + "``").queue();
+            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
+
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "countserv")) {
+            event.getChannel().sendMessage("il y a ``" + guildTab.getMemberCount() + "`` personnes dans ``" + guildTab.getName() + "``").queue();
+            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
+
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "debug")) {
+            event.getChannel().sendMessage(guildTab + " / " + channelTab + " / " + userTab).queue();
+            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
 
         //Uniquement dans tyro
-        String guildTyro = "772171741782343690";
         if (guildEvent.equals(guildTyro)){
             if (event.getMessage().getContentRaw().toLowerCase().contains("vive tyrolium")) {
-                event.getChannel().sendMessage("TYROLIUM EST LA MEILLEUR ENTREPRISE *cest aussi mon papa*").queue();
+                event.getChannel().sendMessage("TYROLIUM EST LA MEILLEURE ENTREPRISE, *c'est aussi mon papa*").queue();
                 System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
 
         //Uniquement Moi
-        String userPapa = "363366883652796416";
         if (userEvent.equals(userPapa)){
-            if (event.getMessage().getContentRaw().toLowerCase().contains("t!admin")) {
-                event.getChannel().sendMessage("oui tu est bien mon createur " + userTab.getAsTag()).queue();
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "admin")) {
+                event.getChannel().sendMessage("tu a bien les perms pour cette commande ``" + userTab.getAsTag() + "``").queue();
+                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+            }
+
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "presente")) {
+                event.getChannel().sendMessage("Bonjour, a tous je suis le TyroBot, et je suis pres a vous aidez sur votre serveur donc oui moi je suis public certain commande seront exclusif a ce serveur, bete si pouvez accedez a des commande de pub de tyro, et sinon j'ai un petit frere TyroServBot, je vais le laissez ce presenter").queue();
+                event.getChannel().sendMessage("ts!presente").queue();
                 System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
-
     }
 }
