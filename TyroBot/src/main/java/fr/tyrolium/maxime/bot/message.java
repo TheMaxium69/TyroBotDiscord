@@ -11,18 +11,25 @@ import javax.annotation.Nonnull;
 public class message extends ListenerAdapter {
     @Override
     public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
+
+        //Prefix
         String Prefix = "t!";
+
+        //Info
         User userTab = event.getAuthor();
-        String userEvent = userTab.getId();
         MessageChannel channelTab = event.getChannel();
         Guild guildTab = event.getGuild();
+
+        //Id
         String guildEvent = guildTab.getId();
+        String userEvent = userTab.getId();
+
+        //log
         System.out.println(guildTab.getName() + " / " + channelTab.getName() + " / " + userTab.getAsTag() + " ----> " + event.getMessage().getContentRaw());
 
         //Unique
         String guildTyro = "772171741782343690";
         String userPapa = "363366883652796416";
-
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
             event.getChannel().sendMessage("```[t!] help = cette commande```").queue();
