@@ -2,6 +2,7 @@ package fr.tyrolium.maxime.bot;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
@@ -29,15 +30,21 @@ public class message extends ListenerAdapter {
         //log
         System.out.println(guildTab.getName() + " / " + channelTab.getName() + " / " + userTab.getAsTag() + " ----> " + event.getMessage().getContentRaw());
 
-        //Unique
+        //Guild
         String guildTyro = "772171741782343690";
         String guildTeamsDev = "865160943498297356";
+
+        //User
         String userPapa = "363366883652796416";
         String userRayqua = "384436295717617665";
         String userChristophe = "781509903718023208";
         String userJessica = "424805452115869697";
         String userDelphine = "686563121778917484";
         String userPeter = "775071990985523210";
+
+        //Emote
+        String emojiGithub = "<:L_Github:858435836118564888>";
+        String emojiLoading = "<a:H_Loading:858733554719522816>";
 
         if (!guildEvent.equals(guildTyro) && !guildEvent.equals(guildTeamsDev)) {
             if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
@@ -64,7 +71,11 @@ public class message extends ListenerAdapter {
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "ping")) {
-            event.getChannel().sendMessage("Pong ??? je suis en dev, je sais pas encore faire").queue();
+            long time = System.currentTimeMillis();
+            event.getChannel().sendMessage(emojiLoading) /* => RestAction<Message> */
+                    .queue(response /* => Message */ -> {
+                        response.editMessageFormat("Votre ping est de : %d ms", System.currentTimeMillis() - time).queue();
+                    });
             System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
@@ -178,73 +189,49 @@ public class message extends ListenerAdapter {
 
                     String userPapaA = "<@!" + userPapa + ">";
                     if (userPapaA.equals(result)) {
-                        event.getChannel().sendMessage("https://github.com/TheMaxium69").queue();
+                        event.getChannel().sendMessage(emojiGithub+"https://github.com/TheMaxium69").queue();
                     }
 
                     String userRayquaA = "<@!" + userRayqua + ">";
                     if (userRayquaA.equals(result)) {
-                        event.getChannel().sendMessage("https://github.com/Rayquamusium").queue();
+                        event.getChannel().sendMessage(emojiGithub+"https://github.com/Rayquamusium").queue();
                     }
 
                     String userChristopheA = "<@!" + userChristophe + ">";
                     if (userChristopheA.equals(result)) {
-                        event.getChannel().sendMessage("https://github.com/christophe-mabilon").queue();
+                        event.getChannel().sendMessage(emojiGithub+"https://github.com/christophe-mabilon").queue();
                     }
 
                     String userJessicaA = "<@!" + userJessica + ">";
                     if (userJessicaA.equals(result)) {
-                        event.getChannel().sendMessage("https://github.com/JessicaVF").queue();
+                        event.getChannel().sendMessage(emojiGithub+"https://github.com/JessicaVF").queue();
                     }
 
                     String userDelphineA = "<@!" + userDelphine + ">";
                     if (userDelphineA.equals(result)) {
-                        event.getChannel().sendMessage("https://github.com/delphine38").queue();
+                        event.getChannel().sendMessage(emojiGithub+"https://github.com/delphine38").queue();
                     }
 
                     String userPeterA = "<@!" + userPeter + ">";
                     if (userPeterA.equals(result)) {
-                        event.getChannel().sendMessage("https://github.com/johndrake31").queue();
+                        event.getChannel().sendMessage(emojiGithub+"https://github.com/johndrake31").queue();
                     }
 
                     if ("Tyrolium".equals(result) || "tyrolium".equals(result) || "tyro".equals(result) || "Tyro".equals(result)) {
-                        event.getChannel().sendMessage("https://github.com/tyrolium").queue();
+                        event.getChannel().sendMessage(emojiGithub+"https://github.com/tyrolium").queue();
                     }
 
                 } catch (StringIndexOutOfBoundsException e) {
-                    event.getChannel().sendMessage("https://github.com/tyrolium").queue();
+                    event.getChannel().sendMessage(emojiGithub+"https://github.com/tyrolium").queue();
                 }
                 System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
-
-
-
-
-
-
-
+        
         //Test
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "embed")) {
-            EmbedBuilder embed = new EmbedBuilder();
-            embed.setColor(8191);
-            embed.setTitle("Commande Help");
-            embed.setDescription(
-                    "-Classique\n" +
-                    "\n" +
-                    "[t!] help = cette commande \n" +
-                    "[t!] ping = la commade pour connaître son ping\n" +
-                    "[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est\n" +
-                    "\n" +
-                    "-Debug\n" +
-                    "\n" +
-                    "[t!] moi = (debug)la commade pour savoir qui tu est\n" +
-                    "[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est\n" +
-                    "[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est\n" +
-                    "[t!] debug = (debug)pour voir le debug\n"
-            );
-            event.getChannel().sendMessage(embed.build()).queue();
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "test")) {
+            event.getChannel().sendMessage("").queue();
             System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
-
     }
 }
