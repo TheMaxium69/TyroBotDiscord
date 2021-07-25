@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import javax.annotation.Nonnull;
+import java.util.concurrent.ExecutionException;
 
 public class message extends ListenerAdapter {
     @Override
@@ -29,6 +30,7 @@ public class message extends ListenerAdapter {
 
         //Unique
         String guildTyro = "772171741782343690";
+        String guildTeamsDev = "865160943498297356";
         String userPapa = "363366883652796416";
         String userRayqua = "384436295717617665";
         String userChristophe = "781509903718023208";
@@ -99,45 +101,52 @@ public class message extends ListenerAdapter {
             }
         }
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "github")) {
-            String cmd = event.getMessage().getContentRaw();
-            String result = cmd.substring(9);
+        //Uniquement sur le TeamsDevelopper ou Tyrolium
+        if (guildEvent.equals(guildTyro) || guildEvent.equals(guildTeamsDev)) {
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "github")) {
+                String cmd = event.getMessage().getContentRaw();
+                try {
+                    String result = cmd.substring(9);
 
-            String userPapaA = "<@!" + userPapa + ">";
-            if(userPapaA.equals(result)){
-                event.getChannel().sendMessage("https://github.com/TheMaxium69").queue();
+                    String userPapaA = "<@!" + userPapa + ">";
+                    if (userPapaA.equals(result)) {
+                        event.getChannel().sendMessage("https://github.com/TheMaxium69").queue();
+                    }
+
+                    String userRayquaA = "<@!" + userRayqua + ">";
+                    if (userRayquaA.equals(result)) {
+                        event.getChannel().sendMessage("https://github.com/Rayquamusium").queue();
+                    }
+
+                    String userChristopheA = "<@!" + userChristophe + ">";
+                    if (userChristopheA.equals(result)) {
+                        event.getChannel().sendMessage("https://github.com/christophe-mabilon").queue();
+                    }
+
+                    String userJessicaA = "<@!" + userJessica + ">";
+                    if (userJessicaA.equals(result)) {
+                        event.getChannel().sendMessage("https://github.com/JessicaVF").queue();
+                    }
+
+                    String userDelphineA = "<@!" + userDelphine + ">";
+                    if (userDelphineA.equals(result)) {
+                        event.getChannel().sendMessage("https://github.com/delphine38").queue();
+                    }
+
+                    String userPeterA = "<@!" + userPeter + ">";
+                    if (userPeterA.equals(result)) {
+                        event.getChannel().sendMessage("https://github.com/johndrake31").queue();
+                    }
+
+                    if ("Tyrolium".equals(result) || "tyrolium".equals(result) || "tyro".equals(result) || "Tyro".equals(result)) {
+                        event.getChannel().sendMessage("https://github.com/tyrolium").queue();
+                    }
+
+                } catch (StringIndexOutOfBoundsException e) {
+                    event.getChannel().sendMessage("https://github.com/tyrolium").queue();
+                }
+                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
-
-            String userRayquaA = "<@!" + userRayqua + ">";
-            if(userRayquaA.equals(result)){
-                event.getChannel().sendMessage("https://github.com/Rayquamusium").queue();
-            }
-
-            String userChristopheA = "<@!" + userChristophe + ">";
-            if(userChristopheA.equals(result)){
-                event.getChannel().sendMessage("https://github.com/christophe-mabilon").queue();
-            }
-
-            String userJessicaA = "<@!" + userJessica + ">";
-            if(userJessicaA.equals(result)){
-                event.getChannel().sendMessage("https://github.com/JessicaVF").queue();
-            }
-
-            String userDelphineA = "<@!" + userDelphine + ">";
-            if(userDelphineA.equals(result)){
-                event.getChannel().sendMessage("https://github.com/delphine38").queue();
-            }
-
-            String userPeterA = "<@!" + userPeter + ">";
-            if(userPeterA.equals(result)){
-                event.getChannel().sendMessage("https://github.com/johndrake31").queue();
-            }
-
-            if("Tyrolium".equals(result) || "tyrolium".equals(result) || "tyro".equals(result) || "Tyro".equals(result) ){
-                event.getChannel().sendMessage("https://github.com/tyrolium").queue();
-            }
-
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
     }
 }
