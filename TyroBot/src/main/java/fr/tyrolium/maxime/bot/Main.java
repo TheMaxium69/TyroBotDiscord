@@ -5,6 +5,10 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 
 import javax.security.auth.login.LoginException;
+import java.io.File;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Main {
@@ -16,14 +20,23 @@ public class Main {
         builder.addEventListeners(new message());
 //        builder.setActivity(Activity.playing("tyrolium.fr | Prefix = t! | En Developpement"));
         builder.setActivity(Activity.playing("Dev le bot"));
-
         builder.build();
-
         System.out.println("Le bot est bien lance");
 
-        while(){
 
-        }
+
+        /*String msg;
+        String id;
+        do {
+            Scanner sendConsole = new Scanner(System.in);
+            System.out.println("Votre message :");
+            msg = sendConsole.nextLine();
+            System.out.println("Result ton msg : "+ msg);
+            System.out.println("Id du channel :");
+            id = sendConsole.nextLine();
+            System.out.println("Result ton msg : "+ id);
+
+        } while (!msg.equals("zaoieuhzaoihebgzaoievzaouievb"));*/
     }
 
 

@@ -5,6 +5,9 @@ import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import javax.annotation.Nonnull;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class message extends ListenerAdapter {
@@ -24,7 +27,31 @@ public class message extends ListenerAdapter {
         String userEvent = userTab.getId();
 
         //log
-        System.out.println(guildTab.getName() + " / " + channelTab.getName() + " / " + userTab.getAsTag() + " ----> " + event.getMessage().getContentRaw());
+        String Date = new SimpleDateFormat("dd/MM HH:mm").format(Calendar.getInstance().getTime());
+        String Linelog = Date + " | " + guildTab.getName() + " / " + channelTab.getName() + " / " + userTab.getAsTag() + " ----> " + event.getMessage().getContentRaw();
+        System.out.println(Linelog);
+
+        //Save Log
+        PrintWriter out = null;
+
+        final String chemin = "/home/maxime/.bot/.log";
+        final File fichier = new File(chemin);
+        try {
+
+            try {
+                out = new PrintWriter(new BufferedWriter(new FileWriter(fichier, true)));
+                out.println(Linelog);
+                out.close();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (Exception e) {
+            System.out.println("Impossible de creer le fichier");
+        }
+
+
+
 
         //Guild
         String guildTyro = "772171741782343690";
