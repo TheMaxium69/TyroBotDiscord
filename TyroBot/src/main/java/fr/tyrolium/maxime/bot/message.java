@@ -1,15 +1,10 @@
 package fr.tyrolium.maxime.bot;
 
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.entities.Guild;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.MessageChannel;
-import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-
 import javax.annotation.Nonnull;
-import java.util.concurrent.ExecutionException;
 
 public class message extends ListenerAdapter {
     @Override
@@ -58,7 +53,7 @@ public class message extends ListenerAdapter {
                                 "[t!] ping = la commade pour connaître son ping\n" +
                                 "[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est\n" +
                                 "\n" +
-                                "-Debug\n" +
+                        "-Debug\n" +
                                 "\n" +
                                 "[t!] moi = (debug)la commade pour savoir qui tu est\n" +
                                 "[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est\n" +
@@ -72,10 +67,7 @@ public class message extends ListenerAdapter {
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "ping")) {
             long time = System.currentTimeMillis();
-            event.getChannel().sendMessage(emojiLoading) /* => RestAction<Message> */
-                    .queue(response /* => Message */ -> {
-                        response.editMessageFormat("Votre ping est de : %d ms", System.currentTimeMillis() - time).queue();
-                    });
+            event.getChannel().sendMessage(emojiLoading).queue(response -> { response.editMessageFormat("Votre ping est de : %d ms", System.currentTimeMillis() - time).queue(); });
             System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
@@ -164,14 +156,14 @@ public class message extends ListenerAdapter {
                                 "[t!] ping = la commade pour connaître son ping\n" +
                                 "[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est\n" +
                                 "\n" +
-                                "-Debug\n" +
+                        "-Debug\n" +
                                 "\n" +
                                 "[t!] moi = (debug)la commade pour savoir qui tu est\n" +
                                 "[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est\n" +
                                 "[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est\n" +
                                 "[t!] debug = (debug)pour voir le debug\n" +
                                 "\n" +
-                                "-Unique à " + guildTab.getName() + "\n" +
+                        "-Unique à " + guildTab.getName() + "\n" +
                                 "[t!] github = donne le github des membre de " + guildTab.getName() + "\n"
                 );
                 event.getChannel().sendMessage(embed.build()).queue();
@@ -227,7 +219,7 @@ public class message extends ListenerAdapter {
                 System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
-        
+
         //Test
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "test")) {
             event.getChannel().sendMessage("").queue();
