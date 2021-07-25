@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 
 import javax.security.auth.login.LoginException;
+import java.util.Scanner;
 
 public class Main {
 
@@ -19,9 +20,14 @@ public class Main {
         builder.build();
 
         System.out.println("Le bot est bien lance");
+
+        while(){
+
+        }
     }
 
 
 //    public static String prefix = "t!";
     public static String prefix = "p!";
+
 }

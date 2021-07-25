@@ -5,6 +5,7 @@ import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import javax.annotation.Nonnull;
+import java.util.Scanner;
 
 public class message extends ListenerAdapter {
     @Override
@@ -216,6 +217,7 @@ public class message extends ListenerAdapter {
                 } catch (StringIndexOutOfBoundsException e) {
                     event.getChannel().sendMessage(emojiGithub+"https://github.com/tyrolium").queue();
                 }
+                
                 System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
@@ -238,6 +240,15 @@ public class message extends ListenerAdapter {
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "png")) {
             event.getChannel().sendMessage("https://placeimg.com/640/480/tech").queue();
+            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
+
+
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "console")) {
+            Scanner saisieUtilisateur = new Scanner(System.in);
+            System.out.println("Veuillez votre message :");
+            String str = saisieUtilisateur.nextLine();
+            event.getChannel().sendMessage(str).queue();
             System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
     }
