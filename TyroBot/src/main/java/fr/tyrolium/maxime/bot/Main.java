@@ -22,6 +22,6 @@ public class Main {
     }
 
 
-    //public static String prefix = "t!";
+//    public static String prefix = "t!";
     public static String prefix = "p!";
 }

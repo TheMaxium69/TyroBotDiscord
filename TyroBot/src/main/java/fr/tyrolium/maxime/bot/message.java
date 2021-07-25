@@ -221,8 +221,23 @@ public class message extends ListenerAdapter {
         }
 
         //Test
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "test")) {
-            event.getChannel().sendMessage("").queue();
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userPapa +">")) {
+            event.getChannel().sendMessage("C'est le fondateur supreme").queue();
+            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
+
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userRayqua +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userRayqua +">")) {
+            event.getChannel().sendMessage("Un bon gars").queue();
+            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
+
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "boucle")) {
+            event.getChannel().sendMessage("p!boucle").queue();
+            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
+
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "png")) {
+            event.getChannel().sendMessage("https://placeimg.com/640/480/tech").queue();
             System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
     }
