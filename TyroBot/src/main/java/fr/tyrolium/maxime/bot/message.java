@@ -1,5 +1,6 @@
 package fr.tyrolium.maxime.bot;
 
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
@@ -38,15 +39,28 @@ public class message extends ListenerAdapter {
         String userDelphine = "686563121778917484";
         String userPeter = "775071990985523210";
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help") && !guildEvent.equals(guildTyro)) {
-            event.getChannel().sendMessage("```[t!] help = cette commande```").queue();
-            event.getChannel().sendMessage("```[t!] ping = la commade pour connaître son ping```").queue();
-            event.getChannel().sendMessage("```[t!] moi = (debug)la commade pour savoir qui tu est```").queue();
-            event.getChannel().sendMessage("```[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est```").queue();
-            event.getChannel().sendMessage("```[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est```").queue();
-            event.getChannel().sendMessage("```[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est```").queue();
-            event.getChannel().sendMessage("```[t!] debug = (debug)pour voir le debug```").queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        if (!guildEvent.equals(guildTyro) && !guildEvent.equals(guildTeamsDev)) {
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
+                EmbedBuilder embed = new EmbedBuilder();
+                embed.setColor(8191);
+                embed.setTitle("Commande Help");
+                embed.setDescription(
+                        "-Classique\n" +
+                                "\n" +
+                                "[t!] help = cette commande \n" +
+                                "[t!] ping = la commade pour connaître son ping\n" +
+                                "[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est\n" +
+                                "\n" +
+                                "-Debug\n" +
+                                "\n" +
+                                "[t!] moi = (debug)la commade pour savoir qui tu est\n" +
+                                "[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est\n" +
+                                "[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est\n" +
+                                "[t!] debug = (debug)pour voir le debug\n"
+                );
+                event.getChannel().sendMessage(embed.build()).queue();
+                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+            }
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "ping")) {
@@ -82,14 +96,27 @@ public class message extends ListenerAdapter {
         //Uniquement dans tyro
         if (guildEvent.equals(guildTyro)){
             if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
-                event.getChannel().sendMessage("```[t!] help = cette commande```").queue();
-                event.getChannel().sendMessage("```[t!] ping = la commade pour connaître son ping```").queue();
-                event.getChannel().sendMessage("```[t!] moi = (debug)la commade pour savoir qui tu est```").queue();
-                event.getChannel().sendMessage("```[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est```").queue();
-                event.getChannel().sendMessage("```[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est```").queue();
-                event.getChannel().sendMessage("```[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est```").queue();
-                event.getChannel().sendMessage("```[t!] debug = (debug)pour voir le debug```").queue();
-                event.getChannel().sendMessage("```[t!] github = donne le github de tyro ou du staff```").queue();
+                EmbedBuilder embed = new EmbedBuilder();
+                embed.setColor(8191);
+                embed.setTitle("Commande Help");
+                embed.setDescription(
+                        "-Classique\n" +
+                                "\n" +
+                                "[t!] help = cette commande \n" +
+                                "[t!] ping = la commade pour connaître son ping\n" +
+                                "[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est\n" +
+                                "\n" +
+                        "-Debug\n" +
+                                "\n" +
+                                "[t!] moi = (debug)la commade pour savoir qui tu est\n" +
+                                "[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est\n" +
+                                "[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est\n" +
+                                "[t!] debug = (debug)pour voir le debug\n" +
+                                "\n" +
+                        "-Unique à " + guildTab.getName() + "\n" +
+                                "[t!] github = donne le github de tyro ou du staff\n"
+                );
+                event.getChannel().sendMessage(embed.build()).queue();
                 System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
 
@@ -112,6 +139,35 @@ public class message extends ListenerAdapter {
                 System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
+
+        //Uniquement TeamsDevelopper
+        if(guildEvent.equals(guildTeamsDev)){
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
+                EmbedBuilder embed = new EmbedBuilder();
+                embed.setColor(8191);
+                embed.setTitle("Commande Help");
+                embed.setDescription(
+                        "-Classique\n" +
+                                "\n" +
+                                "[t!] help = cette commande \n" +
+                                "[t!] ping = la commade pour connaître son ping\n" +
+                                "[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est\n" +
+                                "\n" +
+                                "-Debug\n" +
+                                "\n" +
+                                "[t!] moi = (debug)la commade pour savoir qui tu est\n" +
+                                "[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est\n" +
+                                "[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est\n" +
+                                "[t!] debug = (debug)pour voir le debug\n" +
+                                "\n" +
+                                "-Unique à " + guildTab.getName() + "\n" +
+                                "[t!] github = donne le github des membre de " + guildTab.getName() + "\n"
+                );
+                event.getChannel().sendMessage(embed.build()).queue();
+                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+            }
+        }
+
 
         //Uniquement sur le TeamsDevelopper ou Tyrolium
         if (guildEvent.equals(guildTyro) || guildEvent.equals(guildTeamsDev)) {
@@ -160,5 +216,35 @@ public class message extends ListenerAdapter {
                 System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
+
+
+
+
+
+
+
+        //Test
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "embed")) {
+            EmbedBuilder embed = new EmbedBuilder();
+            embed.setColor(8191);
+            embed.setTitle("Commande Help");
+            embed.setDescription(
+                    "-Classique\n" +
+                    "\n" +
+                    "[t!] help = cette commande \n" +
+                    "[t!] ping = la commade pour connaître son ping\n" +
+                    "[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est\n" +
+                    "\n" +
+                    "-Debug\n" +
+                    "\n" +
+                    "[t!] moi = (debug)la commade pour savoir qui tu est\n" +
+                    "[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est\n" +
+                    "[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est\n" +
+                    "[t!] debug = (debug)pour voir le debug\n"
+            );
+            event.getChannel().sendMessage(embed.build()).queue();
+            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
+
     }
 }
