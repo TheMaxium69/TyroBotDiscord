@@ -13,9 +13,15 @@ public class Main {
         JDABuilder builder = new JDABuilder(AccountType.BOT);
         builder.setToken(argv[0]);
         builder.addEventListeners(new message());
-        builder.setActivity(Activity.playing("tyrolium.fr | Prefix = t! | En Developpement"));
+//        builder.setActivity(Activity.playing("tyrolium.fr | Prefix = t! | En Developpement"));
+        builder.setActivity(Activity.playing("Dev le bot"));
+
         builder.build();
 
         System.out.println("Le bot est bien lance");
     }
+
+
+    //public static String prefix = "t!";
+    public static String prefix = "p!";
 }

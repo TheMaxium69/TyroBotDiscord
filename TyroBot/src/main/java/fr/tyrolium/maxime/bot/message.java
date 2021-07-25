@@ -14,7 +14,7 @@ public class message extends ListenerAdapter {
     public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
 
         //Prefix
-        String Prefix = "t!";
+        String Prefix = Main.prefix;
 
         //Info
         User userTab = event.getAuthor();
@@ -38,7 +38,7 @@ public class message extends ListenerAdapter {
         String userDelphine = "686563121778917484";
         String userPeter = "775071990985523210";
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help") && !guildEvent.equals(guildTyro)) {
             event.getChannel().sendMessage("```[t!] help = cette commande```").queue();
             event.getChannel().sendMessage("```[t!] ping = la commade pour connaître son ping```").queue();
             event.getChannel().sendMessage("```[t!] moi = (debug)la commade pour savoir qui tu est```").queue();
@@ -81,6 +81,18 @@ public class message extends ListenerAdapter {
 
         //Uniquement dans tyro
         if (guildEvent.equals(guildTyro)){
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
+                event.getChannel().sendMessage("```[t!] help = cette commande```").queue();
+                event.getChannel().sendMessage("```[t!] ping = la commade pour connaître son ping```").queue();
+                event.getChannel().sendMessage("```[t!] moi = (debug)la commade pour savoir qui tu est```").queue();
+                event.getChannel().sendMessage("```[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est```").queue();
+                event.getChannel().sendMessage("```[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est```").queue();
+                event.getChannel().sendMessage("```[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est```").queue();
+                event.getChannel().sendMessage("```[t!] debug = (debug)pour voir le debug```").queue();
+                event.getChannel().sendMessage("```[t!] github = donne le github de tyro ou du staff```").queue();
+                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+            }
+
             if (event.getMessage().getContentRaw().toLowerCase().contains("vive tyrolium")) {
                 event.getChannel().sendMessage("TYROLIUM EST LA MEILLEURE ENTREPRISE, *c'est aussi mon papa*").queue();
                 System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
