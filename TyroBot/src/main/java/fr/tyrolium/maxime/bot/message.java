@@ -33,7 +33,6 @@ public class message extends ListenerAdapter {
 
         //Save Log
         PrintWriter out = null;
-
         final String chemin = "/home/maxime/.bot/.log";
         final File fichier = new File(chemin);
         try {
@@ -50,7 +49,15 @@ public class message extends ListenerAdapter {
             System.out.println("Impossible de creer le fichier");
         }
 
-
+        //Verif Prefix
+        String msg = event.getMessage().getContentRaw();
+        try {
+            String cmd = msg.substring(0, 2);
+            if (cmd.equals(Prefix)){
+                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+            }
+        } catch (StringIndexOutOfBoundsException e) {
+        }
 
 
         //Guild
@@ -89,39 +96,32 @@ public class message extends ListenerAdapter {
                                 "[t!] debug = (debug)pour voir le debug\n"
                 );
                 event.getChannel().sendMessage(embed.build()).queue();
-                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "ping")) {
             long time = System.currentTimeMillis();
             event.getChannel().sendMessage(emojiLoading).queue(response -> { response.editMessageFormat("Votre ping est de : %d ms", System.currentTimeMillis() - time).queue(); });
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "moi")) {
             event.getChannel().sendMessage("tu est ``" + userTab.getAsTag() + "``").queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "chan")) {
             event.getChannel().sendMessage("tu est dans le channel ``" + channelTab.getName() + "``").queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "serv")) {
             event.getChannel().sendMessage("tu est dans le serveur ``" + guildTab.getName() + "``").queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "countserv")) {
             event.getChannel().sendMessage("il y a ``" + guildTab.getMemberCount() + "`` personnes dans ``" + guildTab.getName() + "``").queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "debug")) {
             event.getChannel().sendMessage(guildTab + " / " + channelTab + " / " + userTab).queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
         //Uniquement dans tyro
@@ -148,12 +148,35 @@ public class message extends ListenerAdapter {
                                 "[t!] github = donne le github de tyro ou du staff\n"
                 );
                 event.getChannel().sendMessage(embed.build()).queue();
-                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
 
             if (event.getMessage().getContentRaw().toLowerCase().contains("vive tyrolium")) {
                 event.getChannel().sendMessage("TYROLIUM EST LA MEILLEURE ENTREPRISE, *c'est aussi mon papa*").queue();
-                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+            }
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "instagram")) {
+                String cmd = event.getMessage().getContentRaw();
+                try {
+                    String result = cmd.substring(12);
+
+                    String userPapaA = "<@!" + userPapa + ">";
+                    if (userPapaA.equals(result)) {
+                        event.getChannel().sendMessage(emojiGithub+"https://github.com/TheMaxium69").queue();
+                    }
+
+                    String userRayquaA = "<@!" + userRayqua + ">";
+                    if (userRayquaA.equals(result)) {
+                        event.getChannel().sendMessage(emojiGithub+"https://github.com/Rayquamusium").queue();
+                    }
+
+                    result = result.toLowerCase();
+
+                    if ("tyrolium".equals(result) || "tyro".equals(result)) {
+                        event.getChannel().sendMessage(emojiGithub+"https://www.instagram.com/tyroliumentertainment/").queue();
+                    }
+
+                } catch (StringIndexOutOfBoundsException e) {
+                    event.getChannel().sendMessage(emojiGithub+"https://www.instagram.com/tyroliumentertainment/").queue();
+                }
             }
         }
 
@@ -161,13 +184,11 @@ public class message extends ListenerAdapter {
         if (userEvent.equals(userPapa)){
             if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "admin")) {
                 event.getChannel().sendMessage("tu a bien les perms pour cette commande ``" + userTab.getAsTag() + "``").queue();
-                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
 
             if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "presente")) {
                 event.getChannel().sendMessage("Bonjour, a tous je suis le TyroBot, et je suis pres a vous aidez sur votre serveur donc oui moi je suis public certain commande seront exclusif a ce serveur, bete si pouvez accedez a des commande de pub de tyro, et sinon j'ai un petit frere TyroServBot, je vais le laissez ce presenter").queue();
                 event.getChannel().sendMessage("ts!presente").queue();
-                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
 
@@ -195,7 +216,6 @@ public class message extends ListenerAdapter {
                                 "[t!] github = donne le github des membre de " + guildTab.getName() + "\n"
                 );
                 event.getChannel().sendMessage(embed.build()).queue();
-                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
 
@@ -244,30 +264,25 @@ public class message extends ListenerAdapter {
                 } catch (StringIndexOutOfBoundsException e) {
                     event.getChannel().sendMessage(emojiGithub+"https://github.com/tyrolium").queue();
                 }
-                
-                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         }
 
         //Test
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userPapa +">")) {
             event.getChannel().sendMessage("C'est le fondateur supreme").queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userRayqua +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userRayqua +">")) {
             event.getChannel().sendMessage("Un bon gars").queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "boucle")) {
+            event.getChannel().sendMessage("C'est le bot qui spam").queue();
             event.getChannel().sendMessage("p!boucle").queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "png")) {
             event.getChannel().sendMessage("https://placeimg.com/640/480/tech").queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
         }
 
 
@@ -276,7 +291,16 @@ public class message extends ListenerAdapter {
             System.out.println("Veuillez votre message :");
             String str = saisieUtilisateur.nextLine();
             event.getChannel().sendMessage(str).queue();
-            System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+        }
+
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userChristophe +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userChristophe +">")) {
+            event.getChannel().sendMessage("Un gars qui insulte les bots, je pense quil est botophobe").queue();
+        }
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userJessica +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userJessica +">")) {
+            event.getChannel().sendMessage("Une gentille personne, mais elle essaye de prendre la premiere place de mon papa").queue();
+        }
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userPeter +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userPeter +">")) {
+            event.getChannel().sendMessage("Une personne très sympatique, mais trop Americain et mon papa est nul en anglais").queue();
         }
     }
 }
