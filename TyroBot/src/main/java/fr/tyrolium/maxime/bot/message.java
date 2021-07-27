@@ -112,7 +112,7 @@ public class message extends ListenerAdapter {
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "moi")) {
-            event.getChannel().sendMessage("tu est ``" + userTab.getAsTag() + "``").queue();
+            debug.Moi(channelTab, userTab);
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "chan")) {
@@ -362,4 +362,5 @@ public class message extends ListenerAdapter {
             }
         }
     }
+
 }
