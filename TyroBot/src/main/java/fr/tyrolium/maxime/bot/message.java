@@ -30,40 +30,25 @@ public class message extends ListenerAdapter {
         String msgEvent = msgTab.getId();
 
 
+        Message eventMsg = event.getMessage();
+        MessageChannel eventChannel = event.getChannel();
+        Guild eventGuild = event.getGuild();
+        User eventUser = event.getAuthor();
+        String eventDate = new SimpleDateFormat("dd/MM HH:mm").format(Calendar.getInstance().getTime());
+
+
+
         //log
-        String Date = new SimpleDateFormat("dd/MM HH:mm").format(Calendar.getInstance().getTime());
-        String Linelog = Date + " | " + guildTab.getName() + " / " + channelTab.getName() + " / " + userTab.getAsTag() + " ----> " + event.getMessage().getContentRaw();
-        System.out.println(Linelog);
+        Boolean isCmd = app.System(eventDate, eventGuild.getName(), eventChannel.getName(), eventUser.getAsTag(), eventMsg.getContentRaw());
 
-        //Save Log
-        PrintWriter out = null;
-        final String chemin = "/home/maxime/.bot/.log";
-        final File fichier = new File(chemin);
-        try {
-
-            try {
-                out = new PrintWriter(new BufferedWriter(new FileWriter(fichier, true)));
-                out.println(Linelog);
-                out.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
+        if (isCmd) {
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "moi")) {
+                debug.Moi(channelTab, userTab.getAsTag());
             }
-        } catch (Exception e) {
-            System.out.println("Impossible de creer le fichier");
+            command.init(event.getMessage().getContentRaw().toLowerCase(), eventChannel, eventUser);
         }
 
-        //Verif Prefix
-        String msg = event.getMessage().getContentRaw();
-        try {
-            String cmd = msg.substring(0, 2);
-            if (cmd.equals(Prefix)){
-                System.out.println(Date + " | " + guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
-            }
-        } catch (StringIndexOutOfBoundsException e) {
-        }
-
-        //Saison Console
+        /*//Saison Console
         Scanner saisieUtilisateur = new Scanner(System.in);
 
 
@@ -109,10 +94,6 @@ public class message extends ListenerAdapter {
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "ping")) {
             long time = System.currentTimeMillis();
             event.getChannel().sendMessage(emojiLoading).queue(response -> { response.editMessageFormat("Votre ping est de : %d ms", System.currentTimeMillis() - time).queue(); });
-        }
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "moi")) {
-            debug.Moi(channelTab, userTab);
         }
 
         if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "chan")) {
@@ -360,7 +341,7 @@ public class message extends ListenerAdapter {
             } catch (Exception e) {
                 System.out.println("Impossible de creer le fichier");
             }
-        }
+        }*/
     }
 
 }

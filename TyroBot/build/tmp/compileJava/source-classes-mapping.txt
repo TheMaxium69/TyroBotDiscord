@@ -1,5 +1,7 @@
 fr/tyrolium/maxime/bot/debug.java
  fr.tyrolium.maxime.bot.debug
+fr/tyrolium/maxime/bot/app.java
+ fr.tyrolium.maxime.bot.app
 fr/tyrolium/maxime/bot/Main.java
  fr.tyrolium.maxime.bot.Main
 fr/tyrolium/maxime/bot/message.java
