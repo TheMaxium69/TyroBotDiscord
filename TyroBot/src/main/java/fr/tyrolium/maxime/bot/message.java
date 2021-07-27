@@ -8,6 +8,7 @@ import javax.annotation.Nonnull;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Scanner;
 
 public class message extends ListenerAdapter {
@@ -18,13 +19,16 @@ public class message extends ListenerAdapter {
         String Prefix = Main.prefix;
 
         //Info
-        User userTab = event.getAuthor();
+        Message msgTab = event.getMessage();
         MessageChannel channelTab = event.getChannel();
         Guild guildTab = event.getGuild();
+        User userTab = event.getAuthor();
 
         //Id
         String guildEvent = guildTab.getId();
         String userEvent = userTab.getId();
+        String msgEvent = msgTab.getId();
+
 
         //log
         String Date = new SimpleDateFormat("dd/MM HH:mm").format(Calendar.getInstance().getTime());
@@ -54,10 +58,13 @@ public class message extends ListenerAdapter {
         try {
             String cmd = msg.substring(0, 2);
             if (cmd.equals(Prefix)){
-                System.out.println(guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
+                System.out.println(Date + " | " + guildTab.getName() + " / " + channelTab.getName() + " <Requette Effectuez>");
             }
         } catch (StringIndexOutOfBoundsException e) {
         }
+
+        //Saison Console
+        Scanner saisieUtilisateur = new Scanner(System.in);
 
 
         //Guild
@@ -178,6 +185,10 @@ public class message extends ListenerAdapter {
                     event.getChannel().sendMessage(emojiGithub+"https://www.instagram.com/tyroliumentertainment/").queue();
                 }
             }
+
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userRayqua +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userRayqua +">")) {
+                event.getChannel().sendMessage("Un bon gars").queue();
+            }
         }
 
         //Uniquement Moi
@@ -189,6 +200,23 @@ public class message extends ListenerAdapter {
             if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "presente")) {
                 event.getChannel().sendMessage("Bonjour, a tous je suis le TyroBot, et je suis pres a vous aidez sur votre serveur donc oui moi je suis public certain commande seront exclusif a ce serveur, bete si pouvez accedez a des commande de pub de tyro, et sinon j'ai un petit frere TyroServBot, je vais le laissez ce presenter").queue();
                 event.getChannel().sendMessage("ts!presente").queue();
+            }
+
+
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "console")) {
+                channelTab.deleteMessageById(msgEvent).queue();
+
+                System.out.println("Tape ton message :");
+                String resultMsg = saisieUtilisateur.nextLine();
+
+                System.out.println("Met l'id du tchat :");
+                String resultId = saisieUtilisateur.nextLine();
+
+                TextChannel txtChannel = event.getJDA().getTextChannelById(resultId);
+
+                if (txtChannel.canTalk()) {
+                    txtChannel.sendMessage(resultMsg).queue();
+                }
             }
         }
 
@@ -217,11 +245,25 @@ public class message extends ListenerAdapter {
                 );
                 event.getChannel().sendMessage(embed.build()).queue();
             }
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userChristophe +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userChristophe +">")) {
+                event.getChannel().sendMessage("Un gars qui insulte les bots, je pense quil est botophobe").queue();
+            }
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userJessica +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userJessica +">")) {
+                event.getChannel().sendMessage("Une gentille personne, mais elle essaye de prendre la premiere place de mon papa").queue();
+            }
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userPeter +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userPeter +">")) {
+                event.getChannel().sendMessage("Une personne très sympatique, mais trop Americain et mon papa est nul en anglais").queue();
+            }
         }
 
 
         //Uniquement sur le TeamsDevelopper ou Tyrolium
         if (guildEvent.equals(guildTyro) || guildEvent.equals(guildTeamsDev)) {
+
+            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userPapa +">")) {
+                event.getChannel().sendMessage("C'est le fondateur supreme").queue();
+            }
+
             if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "github")) {
                 String cmd = event.getMessage().getContentRaw();
                 try {
@@ -267,40 +309,57 @@ public class message extends ListenerAdapter {
             }
         }
 
-        //Test
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userPapa +">")) {
-            event.getChannel().sendMessage("C'est le fondateur supreme").queue();
-        }
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userRayqua +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userRayqua +">")) {
-            event.getChannel().sendMessage("Un bon gars").queue();
-        }
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "boucle")) {
-            event.getChannel().sendMessage("C'est le bot qui spam").queue();
-            event.getChannel().sendMessage("p!boucle").queue();
-        }
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "png")) {
-            event.getChannel().sendMessage("https://placeimg.com/640/480/tech").queue();
-        }
 
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "console")) {
-            Scanner saisieUtilisateur = new Scanner(System.in);
-            System.out.println("Veuillez votre message :");
-            String str = saisieUtilisateur.nextLine();
-            event.getChannel().sendMessage(str).queue();
-        }
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userChristophe +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userChristophe +">")) {
-            event.getChannel().sendMessage("Un gars qui insulte les bots, je pense quil est botophobe").queue();
-        }
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userJessica +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userJessica +">")) {
-            event.getChannel().sendMessage("Une gentille personne, mais elle essaye de prendre la premiere place de mon papa").queue();
-        }
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userPeter +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userPeter +">")) {
-            event.getChannel().sendMessage("Une personne très sympatique, mais trop Americain et mon papa est nul en anglais").queue();
+
+
+
+
+
+
+        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "test")) {
+
+            System.out.println("L'id du tchat :");
+            String resultTchatId = saisieUtilisateur.nextLine();
+
+            System.out.println("Le nombre de msg:");
+            int resultMsgNb = saisieUtilisateur.nextInt();
+
+            TextChannel histChannel = event.getJDA().getTextChannelById(resultTchatId);
+
+            MessageHistory history = new MessageHistory(histChannel);
+
+            List<Message> msgHist;
+
+            msgHist = history.retrievePast(resultMsgNb).complete();
+
+            final String cheminHist = "/home/maxime/.bot/.robert";
+            final File fichierHist = new File(cheminHist);
+            try {
+
+                try {
+
+                    out = new PrintWriter(new BufferedWriter(new FileWriter(fichierHist, true)));
+                    out.println("# " + histChannel.getName() + " - " + Date + " $" + histChannel.getId());
+                    out.close();
+
+                    int nbMsg = 0;
+                    for( Message oneMsg : msgHist ) {
+                        nbMsg = nbMsg + 1;
+                        String msgStock = nbMsg + "|"+ oneMsg.getAuthor().getName() + " ----> " + oneMsg.getContentRaw();
+
+                        out = new PrintWriter(new BufferedWriter(new FileWriter(fichierHist, true)));
+                        out.println(msgStock);
+                        out.close();
+
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (Exception e) {
+                System.out.println("Impossible de creer le fichier");
+            }
         }
     }
 }
