@@ -1,20 +1,18 @@
 package fr.tyrolium.maxime.bot;
 
 import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.MessageEmbed;
 
 import java.io.*;
 
 public class app {
-
-    public static String pathLog = ".log";
-    public static String pathResquest = ".request";
 
     public static Boolean System(String date, String guildName, String channelName, String userTag, String msgRaw){
         String Line = date + " | " + guildName + " / " + channelName;
         String Linelog = " / " + userTag + " ----> " + msgRaw;
 
         Log(Line + Linelog);
-        File(Line + Linelog, Main.path + pathLog);
+        File(Line + Linelog, stock.path + stock.pathLog);
         Boolean isCmd = MessagePrefix(Line + " <Requette Effectuez>", Line + Linelog, msgRaw);
         return isCmd;
     }
@@ -41,10 +39,10 @@ public class app {
         try {
             String cmd = msgRaw.substring(0, 2);
 
-            if (cmd.equals(Main.prefix)){
+            if (cmd.toLowerCase().equals(stock.prefix)){
                 System.out.println(LineRequest);
-                File(LineLog, Main.path + pathResquest);
-                File(LineRequest, Main.path + pathResquest);
+                File(LineLog, stock.path + stock.pathResquest);
+                File(LineRequest, stock.path + stock.pathResquest);
                 return true;
             }
         } catch (StringIndexOutOfBoundsException e) {
@@ -54,6 +52,17 @@ public class app {
 
     public static void send(MessageChannel channel, String message){
         channel.sendMessage(message).queue();
-        File("return : " + message, Main.path + pathResquest);
+        File("return : " + message, stock.path + stock.pathResquest);
+    }
+
+    public static void sendEmbed(MessageChannel channel, MessageEmbed message){
+        channel.sendMessage(message).queue();
+        File("return : <EMBED>", stock.path + stock.pathResquest);
+    }
+
+    public static void sendPing(MessageChannel channel, Long time){
+        channel.sendMessage(stock.emojiLoading).queue(response -> { response.editMessageFormat("Votre ping est de : %d ms", System.currentTimeMillis() - time).queue(); });
+        File("return : <PING>", stock.path + stock.pathResquest);
+
     }
 }

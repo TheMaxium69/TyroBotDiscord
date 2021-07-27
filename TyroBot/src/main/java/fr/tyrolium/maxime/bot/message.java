@@ -15,132 +15,22 @@ public class message extends ListenerAdapter {
     @Override
     public void onMessageReceived(@Nonnull MessageReceivedEvent event) {
 
-        //Prefix
-        String Prefix = Main.prefix;
-
-        //Info
-        Message msgTab = event.getMessage();
-        MessageChannel channelTab = event.getChannel();
-        Guild guildTab = event.getGuild();
-        User userTab = event.getAuthor();
-
-        //Id
-        String guildEvent = guildTab.getId();
-        String userEvent = userTab.getId();
-        String msgEvent = msgTab.getId();
-
-
-        Message eventMsg = event.getMessage();
+        String eventMsg = event.getMessage().getContentRaw();
         MessageChannel eventChannel = event.getChannel();
         Guild eventGuild = event.getGuild();
         User eventUser = event.getAuthor();
         String eventDate = new SimpleDateFormat("dd/MM HH:mm").format(Calendar.getInstance().getTime());
 
+        Boolean isCmd = app.System(eventDate, eventGuild.getName(), eventChannel.getName(), eventUser.getAsTag(), eventMsg);
+        if (isCmd) { command.init(eventMsg.toLowerCase().substring(2), eventChannel, eventUser, eventGuild); }
+        else { notprefix.init(eventMsg.toLowerCase(), eventChannel, eventUser, eventGuild); }
 
 
-        //log
-        Boolean isCmd = app.System(eventDate, eventGuild.getName(), eventChannel.getName(), eventUser.getAsTag(), eventMsg.getContentRaw());
+        /*
 
-        if (isCmd) {
-            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "moi")) {
-                debug.Moi(channelTab, userTab.getAsTag());
-            }
-            command.init(event.getMessage().getContentRaw().toLowerCase(), eventChannel, eventUser);
-        }
-
-        /*//Saison Console
-        Scanner saisieUtilisateur = new Scanner(System.in);
-
-
-        //Guild
-        String guildTyro = "772171741782343690";
-        String guildTeamsDev = "865160943498297356";
-
-        //User
-        String userPapa = "363366883652796416";
-        String userRayqua = "384436295717617665";
-        String userChristophe = "781509903718023208";
-        String userJessica = "424805452115869697";
-        String userDelphine = "686563121778917484";
-        String userPeter = "775071990985523210";
-
-        //Emote
-        String emojiGithub = "<:L_Github:858435836118564888>";
-        String emojiLoading = "<a:H_Loading:858733554719522816>";
-
-        if (!guildEvent.equals(guildTyro) && !guildEvent.equals(guildTeamsDev)) {
-            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
-                EmbedBuilder embed = new EmbedBuilder();
-                embed.setColor(8191);
-                embed.setTitle("Commande Help");
-                embed.setDescription(
-                        "-Classique\n" +
-                                "\n" +
-                                "[t!] help = cette commande \n" +
-                                "[t!] ping = la commade pour connaître son ping\n" +
-                                "[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est\n" +
-                                "\n" +
-                        "-Debug\n" +
-                                "\n" +
-                                "[t!] moi = (debug)la commade pour savoir qui tu est\n" +
-                                "[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est\n" +
-                                "[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est\n" +
-                                "[t!] debug = (debug)pour voir le debug\n"
-                );
-                event.getChannel().sendMessage(embed.build()).queue();
-            }
-        }
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "ping")) {
-            long time = System.currentTimeMillis();
-            event.getChannel().sendMessage(emojiLoading).queue(response -> { response.editMessageFormat("Votre ping est de : %d ms", System.currentTimeMillis() - time).queue(); });
-        }
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "chan")) {
-            event.getChannel().sendMessage("tu est dans le channel ``" + channelTab.getName() + "``").queue();
-        }
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "serv")) {
-            event.getChannel().sendMessage("tu est dans le serveur ``" + guildTab.getName() + "``").queue();
-        }
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "countserv")) {
-            event.getChannel().sendMessage("il y a ``" + guildTab.getMemberCount() + "`` personnes dans ``" + guildTab.getName() + "``").queue();
-        }
-
-        if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "debug")) {
-            event.getChannel().sendMessage(guildTab + " / " + channelTab + " / " + userTab).queue();
-        }
 
         //Uniquement dans tyro
         if (guildEvent.equals(guildTyro)){
-            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
-                EmbedBuilder embed = new EmbedBuilder();
-                embed.setColor(8191);
-                embed.setTitle("Commande Help");
-                embed.setDescription(
-                        "-Classique\n" +
-                                "\n" +
-                                "[t!] help = cette commande \n" +
-                                "[t!] ping = la commade pour connaître son ping\n" +
-                                "[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est\n" +
-                                "\n" +
-                        "-Debug\n" +
-                                "\n" +
-                                "[t!] moi = (debug)la commade pour savoir qui tu est\n" +
-                                "[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est\n" +
-                                "[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est\n" +
-                                "[t!] debug = (debug)pour voir le debug\n" +
-                                "\n" +
-                        "-Unique à " + guildTab.getName() + "\n" +
-                                "[t!] github = donne le github de tyro ou du staff\n"
-                );
-                event.getChannel().sendMessage(embed.build()).queue();
-            }
-
-            if (event.getMessage().getContentRaw().toLowerCase().contains("vive tyrolium")) {
-                event.getChannel().sendMessage("TYROLIUM EST LA MEILLEURE ENTREPRISE, *c'est aussi mon papa*").queue();
-            }
             if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "instagram")) {
                 String cmd = event.getMessage().getContentRaw();
                 try {
@@ -203,29 +93,7 @@ public class message extends ListenerAdapter {
 
         //Uniquement TeamsDevelopper
         if(guildEvent.equals(guildTeamsDev)){
-            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "help")) {
-                EmbedBuilder embed = new EmbedBuilder();
-                embed.setColor(8191);
-                embed.setTitle("Commande Help");
-                embed.setDescription(
-                        "-Classique\n" +
-                                "\n" +
-                                "[t!] help = cette commande \n" +
-                                "[t!] ping = la commade pour connaître son ping\n" +
-                                "[t!] countserv = la commade pour savoir le nombre de personne dans le serveur que tu est\n" +
-                                "\n" +
-                        "-Debug\n" +
-                                "\n" +
-                                "[t!] moi = (debug)la commade pour savoir qui tu est\n" +
-                                "[t!] chan = (debug)la commade pour savoir dans qu'elle channel tu est\n" +
-                                "[t!] serv = (debug)la commade pour savoir dans qu'elle serveur tu est\n" +
-                                "[t!] debug = (debug)pour voir le debug\n" +
-                                "\n" +
-                        "-Unique à " + guildTab.getName() + "\n" +
-                                "[t!] github = donne le github des membre de " + guildTab.getName() + "\n"
-                );
-                event.getChannel().sendMessage(embed.build()).queue();
-            }
+
             if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userChristophe +">")||event.getMessage().getContentRaw().toLowerCase().contains(Prefix + " <@!" + userChristophe +">")) {
                 event.getChannel().sendMessage("Un gars qui insulte les bots, je pense quil est botophobe").queue();
             }
@@ -238,57 +106,6 @@ public class message extends ListenerAdapter {
         }
 
 
-        //Uniquement sur le TeamsDevelopper ou Tyrolium
-        if (guildEvent.equals(guildTyro) || guildEvent.equals(guildTeamsDev)) {
-
-            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "<@!" + userPapa +">")) {
-                event.getChannel().sendMessage("C'est le fondateur supreme").queue();
-            }
-
-            if (event.getMessage().getContentRaw().toLowerCase().contains(Prefix + "github")) {
-                String cmd = event.getMessage().getContentRaw();
-                try {
-                    String result = cmd.substring(9);
-
-                    String userPapaA = "<@!" + userPapa + ">";
-                    if (userPapaA.equals(result)) {
-                        event.getChannel().sendMessage(emojiGithub+"https://github.com/TheMaxium69").queue();
-                    }
-
-                    String userRayquaA = "<@!" + userRayqua + ">";
-                    if (userRayquaA.equals(result)) {
-                        event.getChannel().sendMessage(emojiGithub+"https://github.com/Rayquamusium").queue();
-                    }
-
-                    String userChristopheA = "<@!" + userChristophe + ">";
-                    if (userChristopheA.equals(result)) {
-                        event.getChannel().sendMessage(emojiGithub+"https://github.com/christophe-mabilon").queue();
-                    }
-
-                    String userJessicaA = "<@!" + userJessica + ">";
-                    if (userJessicaA.equals(result)) {
-                        event.getChannel().sendMessage(emojiGithub+"https://github.com/JessicaVF").queue();
-                    }
-
-                    String userDelphineA = "<@!" + userDelphine + ">";
-                    if (userDelphineA.equals(result)) {
-                        event.getChannel().sendMessage(emojiGithub+"https://github.com/delphine38").queue();
-                    }
-
-                    String userPeterA = "<@!" + userPeter + ">";
-                    if (userPeterA.equals(result)) {
-                        event.getChannel().sendMessage(emojiGithub+"https://github.com/johndrake31").queue();
-                    }
-
-                    if ("Tyrolium".equals(result) || "tyrolium".equals(result) || "tyro".equals(result) || "Tyro".equals(result)) {
-                        event.getChannel().sendMessage(emojiGithub+"https://github.com/tyrolium").queue();
-                    }
-
-                } catch (StringIndexOutOfBoundsException e) {
-                    event.getChannel().sendMessage(emojiGithub+"https://github.com/tyrolium").queue();
-                }
-            }
-        }
 
 
 

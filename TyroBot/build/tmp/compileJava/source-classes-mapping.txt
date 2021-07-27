@@ -1,8 +1,18 @@
+fr/tyrolium/maxime/bot/notprefix.java
+ fr.tyrolium.maxime.bot.notprefix
+fr/tyrolium/maxime/bot/reseaux.java
+ fr.tyrolium.maxime.bot.reseaux
 fr/tyrolium/maxime/bot/debug.java
  fr.tyrolium.maxime.bot.debug
+fr/tyrolium/maxime/bot/stock.java
+ fr.tyrolium.maxime.bot.stock
 fr/tyrolium/maxime/bot/app.java
  fr.tyrolium.maxime.bot.app
 fr/tyrolium/maxime/bot/Main.java
  fr.tyrolium.maxime.bot.Main
+fr/tyrolium/maxime/bot/admin.java
+ fr.tyrolium.maxime.bot.admin
 fr/tyrolium/maxime/bot/message.java
  fr.tyrolium.maxime.bot.message
+fr/tyrolium/maxime/bot/command.java
+ fr.tyrolium.maxime.bot.command
