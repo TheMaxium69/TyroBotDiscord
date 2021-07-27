@@ -2,11 +2,14 @@ package fr.tyrolium.maxime.bot;
 
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.EventListener;
 
 public class command {
-    public static void init(String request, MessageChannel channel, User user, Guild guild){
+    public static void init(String request, MessageChannel channel, User user, Guild guild, Message messageRaw, MessageReceivedEvent event){
 
         /*help*/
         if (request.contains("help")){ Help(channel, guild); }
@@ -39,6 +42,8 @@ public class command {
         /*admin*/
         if (request.contains("admin") && user.getId().equals(stock.userPapa)){ admin.Admin(channel, user.getAsTag()); }
 
+        /*console*/
+        if (request.contains("console") && user.getId().equals(stock.userPapa)){ admin.Console(channel, messageRaw, event); }
     }
 
     public static void Help(MessageChannel channel, Guild guild){
