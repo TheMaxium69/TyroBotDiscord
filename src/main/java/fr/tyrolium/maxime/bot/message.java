@@ -25,8 +25,19 @@ public class message extends ListenerAdapter {
         if (isCmd) { command.init(eventMsg.getContentRaw().toLowerCase().substring(2), eventChannel, eventUser, eventGuild, eventMsg, event); }
         else { notprefix.init(eventMsg.getContentRaw().toLowerCase(), eventChannel, eventUser, eventGuild); }
 
+        if (event.getMessage().getContentRaw().toLowerCase().contains(stock.prefix + "get")) {
+            String link = eventMsg.getContentRaw().toLowerCase().substring(6);
+            System.out.println(link);
+            String result = null;
+            try {
+                result = Main.get(link);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            eventChannel.sendMessage(result).queue();
+        }
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(stock.prefix + "test") && eventUser.getId().equals(stock.userPapa)) {
+        if (event.getMessage().getContentRaw().toLowerCase().contains(stock.prefix + "hist") && eventUser.getId().equals(stock.userPapa)) {
 
             System.out.println("L'id du tchat :");
             String resultTchatId = stock.scanner.nextLine();
