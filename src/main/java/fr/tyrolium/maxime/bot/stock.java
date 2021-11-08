@@ -25,7 +25,7 @@ public class stock {
 
     //Path
 //    public static String path = "t!";
-    public static String path = "/home/maxime/.bot/";
+    public static String path = "D:/log/";
 
     //Prefix
 //    public static String prefix = "t!";

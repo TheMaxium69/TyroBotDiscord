@@ -1,5 +1,6 @@
-package fr.tyrolium.maxime.bot;
+package fr.tyrolium.maxime.bot.cmd;
 
+import fr.tyrolium.maxime.bot.app;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;

@@ -26,7 +26,7 @@ public class message extends ListenerAdapter {
         else { notprefix.init(eventMsg.getContentRaw().toLowerCase(), eventChannel, eventUser, eventGuild); }
 
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(stock.prefix + "test") && eventUser.getId().equals(stock.userPapa)) {
+        if (event.getMessage().getContentRaw().toLowerCase().contains(stock.prefix + "sniff") && eventUser.getId().equals(stock.userPapa)) {
 
             System.out.println("L'id du tchat :");
             String resultTchatId = stock.scanner.nextLine();
@@ -44,7 +44,7 @@ public class message extends ListenerAdapter {
 
 
             PrintWriter out = null;
-            final String cheminHist = "/home/maxime/.bot/.robert";
+            final String cheminHist = "D:/log/.sniff";
             final File fichierHist = new File(cheminHist);
             try {
 

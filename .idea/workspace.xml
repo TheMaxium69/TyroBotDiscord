@@ -5,8 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32536891-324f-48a2-a740-087188259146" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/admin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/command.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/message.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/stock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/stock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/cmd/admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/debug.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/cmd/debug.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/reseaux.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/cmd/reseaux.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/stock.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +50,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1uFj4qEu5QET6DSychHCE9GuWky" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -55,7 +76,18 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="fr.tyrolium.maxime.bot.Main" />
       <module name="TyroBot.main" />
-      <option name="PROGRAM_PARAMETERS" value="ODU2NDY0MjM4NzIwNzEyNzE1.YNBaeg.uiYw-XVTqdxf2nTqxYtRQvoihgo" />
+      <option name="PROGRAM_PARAMETERS" value="ODU2NDMxNDMxOTQ4NTY2NjAw.YNA77Q.1Hl9w1h0wcD2FbgkrCoYJ_SfjDM" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -173,6 +205,7 @@
       <workItem from="1624726768185" duration="3000" />
       <workItem from="1624740714896" duration="5000" />
       <workItem from="1624864173359" duration="105000" />
+      <workItem from="1636318557735" duration="7535000" />
     </task>
     <servers />
   </component>
