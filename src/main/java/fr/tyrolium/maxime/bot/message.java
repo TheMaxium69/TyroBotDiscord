@@ -21,23 +21,12 @@ public class message extends ListenerAdapter {
         User eventUser = event.getAuthor();
         String eventDate = new SimpleDateFormat("dd/MM HH:mm").format(Calendar.getInstance().getTime());
 
-        Boolean isCmd = app.System(eventDate, eventGuild.getName(), eventChannel.getName(), eventUser.getAsTag(), eventMsg.getContentRaw());
+        Boolean isCmd = app.System(eventDate, eventGuild.getName(), eventChannel, eventUser.getAsTag(), eventMsg.getContentRaw(), event);
         if (isCmd) { command.init(eventMsg.getContentRaw().toLowerCase().substring(2), eventChannel, eventUser, eventGuild, eventMsg, event); }
         else { notprefix.init(eventMsg.getContentRaw().toLowerCase(), eventChannel, eventUser, eventGuild); }
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(stock.prefix + "get")) {
-            String link = eventMsg.getContentRaw().toLowerCase().substring(6);
-            System.out.println(link);
-            String result = null;
-            try {
-                result = Main.get(link);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            eventChannel.sendMessage(result).queue();
-        }
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(stock.prefix + "hist") && eventUser.getId().equals(stock.userPapa)) {
+        if (event.getMessage().getContentRaw().toLowerCase().contains(stock.prefix + "sniff") && eventUser.getId().equals(stock.userPapa)) {
 
             System.out.println("L'id du tchat :");
             String resultTchatId = stock.scanner.nextLine();
@@ -55,7 +44,7 @@ public class message extends ListenerAdapter {
 
 
             PrintWriter out = null;
-            final String cheminHist = "/home/maxime/.bot/.robert";
+            final String cheminHist = "D:/log/.sniff";
             final File fichierHist = new File(cheminHist);
             try {
 

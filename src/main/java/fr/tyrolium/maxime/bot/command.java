@@ -1,12 +1,14 @@
 package fr.tyrolium.maxime.bot;
 
+import fr.tyrolium.maxime.bot.cmd.admin;
+import fr.tyrolium.maxime.bot.cmd.debug;
+import fr.tyrolium.maxime.bot.cmd.reseaux;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
-import net.dv8tion.jda.api.hooks.EventListener;
 
 public class command {
     public static void init(String request, MessageChannel channel, User user, Guild guild, Message messageRaw, MessageReceivedEvent event){

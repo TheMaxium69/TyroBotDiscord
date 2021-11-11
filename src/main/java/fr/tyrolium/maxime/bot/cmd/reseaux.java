@@ -1,5 +1,7 @@
-package fr.tyrolium.maxime.bot;
+package fr.tyrolium.maxime.bot.cmd;
 
+import fr.tyrolium.maxime.bot.app;
+import fr.tyrolium.maxime.bot.stock;
 import net.dv8tion.jda.api.entities.MessageChannel;
 
 public class reseaux {

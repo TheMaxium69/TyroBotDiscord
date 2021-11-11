@@ -1,5 +1,7 @@
-package fr.tyrolium.maxime.bot;
+package fr.tyrolium.maxime.bot.cmd;
 
+import fr.tyrolium.maxime.bot.app;
+import fr.tyrolium.maxime.bot.stock;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -17,13 +19,6 @@ public class admin {
         System.out.println("Tape ton message :");
         String resultMsg = stock.scanner.nextLine();
 
-        System.out.println("Met l'id du tchat :");
-        String resultId = stock.scanner.nextLine();
-
-        TextChannel txtChannel = event.getJDA().getTextChannelById(resultId);
-
-        if (txtChannel.canTalk()) {
-            app.send(txtChannel, resultMsg);
-        }
+            app.send(channel, resultMsg);
     }
 }
