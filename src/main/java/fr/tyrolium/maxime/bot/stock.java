@@ -1,5 +1,6 @@
 package fr.tyrolium.maxime.bot;
 
+import java.nio.channels.Channel;
 import java.util.Scanner;
 
 public class stock {
@@ -37,4 +38,7 @@ public class stock {
 
     //Techno
     public static Scanner scanner = new Scanner(System.in);
+
+    //Channel
+    public static String logChannel = "908460977379504208";
 }

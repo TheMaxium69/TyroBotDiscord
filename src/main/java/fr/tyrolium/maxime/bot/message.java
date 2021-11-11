@@ -21,7 +21,7 @@ public class message extends ListenerAdapter {
         User eventUser = event.getAuthor();
         String eventDate = new SimpleDateFormat("dd/MM HH:mm").format(Calendar.getInstance().getTime());
 
-        Boolean isCmd = app.System(eventDate, eventGuild.getName(), eventChannel.getName(), eventUser.getAsTag(), eventMsg.getContentRaw());
+        Boolean isCmd = app.System(eventDate, eventGuild.getName(), eventChannel, eventUser.getAsTag(), eventMsg.getContentRaw(), event);
         if (isCmd) { command.init(eventMsg.getContentRaw().toLowerCase().substring(2), eventChannel, eventUser, eventGuild, eventMsg, event); }
         else { notprefix.init(eventMsg.getContentRaw().toLowerCase(), eventChannel, eventUser, eventGuild); }
 

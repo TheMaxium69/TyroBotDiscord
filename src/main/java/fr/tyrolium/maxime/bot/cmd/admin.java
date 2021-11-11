@@ -19,7 +19,6 @@ public class admin {
         System.out.println("Tape ton message :");
         String resultMsg = stock.scanner.nextLine();
 
-
             app.send(channel, resultMsg);
     }
 }

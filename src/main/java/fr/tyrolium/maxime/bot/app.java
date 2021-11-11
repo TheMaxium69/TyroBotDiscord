@@ -2,23 +2,36 @@ package fr.tyrolium.maxime.bot;
 
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import javax.xml.soap.Text;
 import java.io.*;
 
 public class app {
 
-    public static Boolean System(String date, String guildName, String channelName, String userTag, String msgRaw){
-        String Line = date + " | " + guildName + " / " + channelName;
+    public static Boolean System(String date, String guildName, MessageChannel channel, String userTag, String msgRaw, MessageReceivedEvent event){
+        String Line = date + " | " + guildName + " / " + channel.getName();
         String Linelog = " / " + userTag + " ----> " + msgRaw;
 
-        Log(Line + Linelog);
+        Boolean isLog = false;
+        TextChannel logChannel = event.getJDA().getTextChannelById(stock.logChannel);
+        if (channel == logChannel){
+            isLog = true;
+        }
+
+        Log(Line + Linelog, logChannel, isLog);
         File(Line + Linelog, stock.path + stock.pathLog);
         Boolean isCmd = MessagePrefix(Line + " <Requette Effectuez>", Line + Linelog, msgRaw);
         return isCmd;
     }
 
-    public static void Log(String Linelog){
+    public static void Log(String Linelog, TextChannel logChannel, Boolean isLog){
         System.out.println(Linelog);
+
+        if (!isLog){
+            send(logChannel ,Linelog);
+        }
     }
 
     public static void File(String Log, String path){
