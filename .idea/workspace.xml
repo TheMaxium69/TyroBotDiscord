@@ -7,23 +7,32 @@
     <list default="true" id="32536891-324f-48a2-a740-087188259146" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/fileChanges/last-build.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/gc.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/configuration-cache/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/Main.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/app.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/app.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/cmd/admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/cmd/admin.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/command.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/debug.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/message.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/reseaux.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/notprefix.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/stock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/fr/tyrolium/maxime/bot/stock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/TyroBot-0.3.0-BETA-all.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/app.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/app.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/cmd/admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/cmd/admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/stock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/stock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/shadowJar/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/tyrolium/maxime/bot/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +200,7 @@
       <workItem from="1624740714896" duration="5000" />
       <workItem from="1624864173359" duration="105000" />
       <workItem from="1636318557735" duration="7535000" />
-      <workItem from="1636664219954" duration="2278000" />
+      <workItem from="1636664219954" duration="2515000" />
     </task>
     <servers />
   </component>
