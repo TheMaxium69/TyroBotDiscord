@@ -10,7 +10,7 @@ import java.io.*;
 
 public class app {
 
-    public static Boolean System(String date, String guildName, MessageChannel channel, String userTag, String msgRaw, MessageReceivedEvent event){
+    public static Boolean System(String date, String guildName, MessageChannel channel, String userTag, String msgRaw, MessageReceivedEvent event, String prefix){
         String Line = date + " | " + guildName + " / " + channel.getName();
         String Linelog = " / " + userTag + " ----> " + msgRaw;
         String LineChan = date + " | __" + guildName + "__ / " + channel.getName() + " / **" + userTag + "** ----> *" + msgRaw + "*";
@@ -21,18 +21,21 @@ public class app {
             isLog = true;
         }
 
-        Log(Line + Linelog, LineChan, logChannel, isLog);
-        File(Line + Linelog, stock.path + stock.pathLog);
-        Boolean isCmd = MessagePrefix(Line + " <Requette Effectuez>", Line + Linelog, msgRaw);
+        if (!isLog) {
+            Log(Line + Linelog, LineChan, logChannel);
+            if (Main.APP_ENV == "PROD") {
+                File(Line + Linelog, stock.path + stock.pathLog);
+            } else if (Main.APP_ENV == "DEV") {
+                File(Line + Linelog, stock.pathDev + stock.pathLog);
+            }
+        }
+        Boolean isCmd = MessagePrefix(Line + " <Requette Effectuez>", Line + Linelog, msgRaw, prefix, isLog);
         return isCmd;
     }
 
-    public static void Log(String Linelog, String LineChan, TextChannel logChannel, Boolean isLog){
-
-        if (!isLog){
-            System.out.println(Linelog);
-            send(logChannel, LineChan);
-        }
+    public static void Log(String Linelog, String LineChan, TextChannel logChannel){
+        System.out.println(Linelog);
+        sendLog(logChannel, LineChan);
     }
 
     public static void File(String Log, String path){
@@ -49,14 +52,19 @@ public class app {
         }
     }
 
-    public static boolean MessagePrefix(String LineRequest, String LineLog, String msgRaw){
+    public static boolean MessagePrefix(String LineRequest, String LineLog, String msgRaw, String prefix, Boolean islog){
         try {
             String cmd = msgRaw.substring(0, 2);
 
-            if (cmd.toLowerCase().equals(stock.prefix)){
+            if (cmd.toLowerCase().equals(prefix)){
                 System.out.println(LineRequest);
-                File(LineLog, stock.path + stock.pathResquest);
-                File(LineRequest, stock.path + stock.pathResquest);
+                if (Main.APP_ENV == "PROD") {
+                    File(LineLog, stock.path + stock.pathResquest);
+                    File(LineRequest, stock.path + stock.pathResquest);
+                } else if (Main.APP_ENV == "DEV") {
+                    File(LineLog, stock.pathDev + stock.pathResquest);
+                    File(LineRequest, stock.pathDev + stock.pathResquest);
+                }
                 return true;
             }
         } catch (StringIndexOutOfBoundsException e) {
@@ -66,17 +74,32 @@ public class app {
 
     public static void send(MessageChannel channel, String message){
         channel.sendMessage(message).queue();
-        File("return : " + message, stock.path + stock.pathResquest);
+        if (Main.APP_ENV == "PROD"){
+            File("return : " + message, stock.path + stock.pathResquest);
+        }else if (Main.APP_ENV == "DEV"){
+            File("return : " + message, stock.pathDev + stock.pathResquest);
+        }
+    }
+    public static void sendLog(MessageChannel channel, String message){
+        channel.sendMessage(message).queue();
     }
 
     public static void sendEmbed(MessageChannel channel, MessageEmbed message){
         channel.sendMessage(message).queue();
-        File("return : <EMBED>", stock.path + stock.pathResquest);
+        if (Main.APP_ENV == "PROD"){
+            File("return : <EMBED>", stock.path + stock.pathResquest);
+        }else if (Main.APP_ENV == "DEV"){
+            File("return : <EMBED>", stock.pathDev + stock.pathResquest);
+        }
     }
 
     public static void sendPing(MessageChannel channel, Long time){
         channel.sendMessage(stock.emojiLoading).queue(response -> { response.editMessageFormat("Votre ping est de : %d ms", System.currentTimeMillis() - time).queue(); });
-        File("return : <PING>", stock.path + stock.pathResquest);
+        if (Main.APP_ENV == "PROD"){
+            File("return : <PING>", stock.path + stock.pathResquest);
+        }else if (Main.APP_ENV == "DEV"){
+            File("return : <PING>", stock.pathDev + stock.pathResquest);
+        }
 
     }
 }

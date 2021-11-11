@@ -25,16 +25,17 @@ public class stock {
     public static String pathResquest = ".request";
 
     //Path
-//    public static String path = "t!";
-    public static String path = "D:/log/";
+    public static String path = "/home/debian/.bot/";
+    public static String pathDev = "D:/log/";
 
     //Prefix
-//    public static String prefix = "t!";
-    public static String prefix = "p!";
+
+    public static String prefix = "t!";
+    public static String prefixDev = "p!";
 
     //Played
-//    public static String playing = "tyrolium.fr | Prefix = t! | En Developpement";
-    public static String playing = "Dev le bot";
+    public static String playing = "tyrolium.fr | Prefix = t! | En Developpement";
+    public static String playingDev = "Dev le bot";
 
     //Techno
     public static Scanner scanner = new Scanner(System.in);

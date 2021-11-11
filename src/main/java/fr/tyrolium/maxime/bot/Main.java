@@ -7,14 +7,19 @@ import javax.security.auth.login.LoginException;
 
 public class Main {
 
-    String
+    // PROD or DEV
+    public static String APP_ENV = "DEV";
 
     public static void main(String[] argv) throws LoginException {
         System.out.println("BOT = Initialization");
         JDABuilder builder = new JDABuilder(AccountType.BOT);
         builder.setToken(argv[0]);
         builder.addEventListeners(new message());
-        builder.setActivity(Activity.playing(stock.playing));
+        if (APP_ENV == "PROD") {
+            builder.setActivity(Activity.playing(stock.playing));
+        } else if (APP_ENV == "DEV"){
+            builder.setActivity(Activity.playing(stock.playingDev));
+        }
         builder.build();
         System.out.println("BOT = Ready");
     }

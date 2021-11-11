@@ -20,13 +20,21 @@ public class message extends ListenerAdapter {
         Guild eventGuild = event.getGuild();
         User eventUser = event.getAuthor();
         String eventDate = new SimpleDateFormat("dd/MM HH:mm").format(Calendar.getInstance().getTime());
+        String prefix = null;
+        if (Main.APP_ENV == "PROD"){
+            prefix = stock.prefix;
+        }else if (Main.APP_ENV == "DEV"){
+            prefix = stock.prefixDev;
+        }
 
-        Boolean isCmd = app.System(eventDate, eventGuild.getName(), eventChannel, eventUser.getAsTag(), eventMsg.getContentRaw(), event);
+        Boolean isCmd = app.System(eventDate, eventGuild.getName(), eventChannel, eventUser.getAsTag(), eventMsg.getContentRaw(), event, prefix);
         if (isCmd) { command.init(eventMsg.getContentRaw().toLowerCase().substring(2), eventChannel, eventUser, eventGuild, eventMsg, event); }
         else { notprefix.init(eventMsg.getContentRaw().toLowerCase(), eventChannel, eventUser, eventGuild); }
 
 
-        if (event.getMessage().getContentRaw().toLowerCase().contains(stock.prefix + "sniff") && eventUser.getId().equals(stock.userPapa)) {
+
+        //Commande Brute
+        if (event.getMessage().getContentRaw().toLowerCase().contains(prefix + "sniff") && eventUser.getId().equals(stock.userPapa)) {
 
             System.out.println("L'id du tchat :");
             String resultTchatId = stock.scanner.nextLine();
