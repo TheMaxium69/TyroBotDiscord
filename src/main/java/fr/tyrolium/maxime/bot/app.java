@@ -13,6 +13,7 @@ public class app {
     public static Boolean System(String date, String guildName, MessageChannel channel, String userTag, String msgRaw, MessageReceivedEvent event){
         String Line = date + " | " + guildName + " / " + channel.getName();
         String Linelog = " / " + userTag + " ----> " + msgRaw;
+        String LineChan = date + " | __" + guildName + "__ / " + channel.getName() + " / **" + userTag + "** ----> *" + msgRaw + "*";
 
         Boolean isLog = false;
         TextChannel logChannel = event.getJDA().getTextChannelById(stock.logChannel);
@@ -20,17 +21,17 @@ public class app {
             isLog = true;
         }
 
-        Log(Line + Linelog, logChannel, isLog);
+        Log(Line + Linelog, LineChan, logChannel, isLog);
         File(Line + Linelog, stock.path + stock.pathLog);
         Boolean isCmd = MessagePrefix(Line + " <Requette Effectuez>", Line + Linelog, msgRaw);
         return isCmd;
     }
 
-    public static void Log(String Linelog, TextChannel logChannel, Boolean isLog){
-        System.out.println(Linelog);
+    public static void Log(String Linelog, String LineChan, TextChannel logChannel, Boolean isLog){
 
         if (!isLog){
-            send(logChannel ,Linelog);
+            System.out.println(Linelog);
+            send(logChannel, LineChan);
         }
     }
 
