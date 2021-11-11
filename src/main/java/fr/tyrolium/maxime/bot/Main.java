@@ -7,6 +7,8 @@ import javax.security.auth.login.LoginException;
 
 public class Main {
 
+    String
+
     public static void main(String[] argv) throws LoginException {
         System.out.println("BOT = Initialization");
         JDABuilder builder = new JDABuilder(AccountType.BOT);

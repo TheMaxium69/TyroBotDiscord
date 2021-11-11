@@ -17,8 +17,8 @@ public class stock {
     public static String userPeter = "775071990985523210";
 
     //Emote
-    public static String emojiGithub = "<:L_Github:858435836118564888>";
-    public static String emojiLoading = "<a:H_Loading:858733554719522816>";
+    public static String emojiGithub = "<:github:908478058330206239>";
+    public static String emojiLoading = "<a:loading:908477700090511361>";
 
     //File
     public static String pathLog = ".log";
