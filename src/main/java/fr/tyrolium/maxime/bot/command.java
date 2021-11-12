@@ -11,7 +11,7 @@ import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class command {
-    public static void init(String request, MessageChannel channel, User user, Guild guild, Message messageRaw, MessageReceivedEvent event){
+    public static void init(String request, MessageChannel channel, User user, Guild guild, Message messageRaw, MessageReceivedEvent event, String eventDate){
 
         /*help*/
         if (request.contains("help")){ Help(channel, guild); }
@@ -45,7 +45,10 @@ public class command {
         if (request.contains("admin") && user.getId().equals(stock.userPapa)){ admin.Admin(channel, user.getAsTag()); }
 
         /*console*/
-        if (request.contains("console") && user.getId().equals(stock.userPapa)){ admin.Console(channel, messageRaw, event); }
+        if (request.contains("console") && user.getId().equals(stock.userPapa)){ admin.Console(channel, messageRaw); }
+
+        /*sniff*/
+        if (request.contains("sniff") && user.getId().equals(stock.userPapa)){ admin.Sniff(event, eventDate, channel, messageRaw); }
     }
 
     public static void Help(MessageChannel channel, Guild guild){
