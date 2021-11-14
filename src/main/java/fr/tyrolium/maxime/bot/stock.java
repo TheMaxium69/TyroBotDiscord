@@ -1,8 +1,5 @@
 package fr.tyrolium.maxime.bot;
 
-import java.nio.channels.Channel;
-import java.util.Scanner;
-
 public class stock {
     //Guild
     public static String guildTyro = "772171741782343690";
@@ -10,6 +7,7 @@ public class stock {
 
     //User
     public static String userPapa = "363366883652796416";
+    public static String userFrere = "849915439844687893";
     public static String userRayqua = "384436295717617665";
     public static String userChristophe = "781509903718023208";
     public static String userJessica = "424805452115869697";
@@ -37,9 +35,9 @@ public class stock {
     public static String playing = "tyrolium.fr | Prefix = t! | En Developpement";
     public static String playingDev = "Dev le bot";
 
-    //Techno
-    public static Scanner scanner = new Scanner(System.in);
-
     //Channel
-    public static String logChannel = "908460977379504208";
+    public static String logChannel = "909566707658539096";
+    public static String alertChannel = "909576821220196433";
+    public static String sniffChannel = "909567130310152202";
+
 }

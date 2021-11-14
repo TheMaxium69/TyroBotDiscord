@@ -8,7 +8,7 @@ import javax.security.auth.login.LoginException;
 public class Main {
 
     // PROD or DEV
-    public static String APP_ENV = "DEV";
+    public static String APP_ENV = "PROD";
 
     public static void main(String[] argv) throws LoginException {
         System.out.println("BOT = Initialization");

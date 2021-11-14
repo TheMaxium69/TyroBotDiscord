@@ -32,8 +32,7 @@ public class message extends ListenerAdapter {
 
         Boolean isCmd = app.System(eventDate, eventGuild.getName(), eventChannel, eventUser.getAsTag(), eventMsg.getContentRaw(), event, prefix);
         if (isCmd) { command.init(eventMsg.getContentRaw().toLowerCase().substring(2), eventChannel, eventUser, eventGuild, eventMsg, event, eventDate); }
-        else { notprefix.init(eventMsg.getContentRaw().toLowerCase(), eventChannel, eventUser, eventGuild); }
-
+        else { notprefix.init(eventMsg.getContentRaw().toLowerCase(), eventChannel, eventUser, eventGuild, event); }
     }
 
 }
