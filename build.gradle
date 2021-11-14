@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'fr.tyrolium.maxime.bot'
-version '0.6.1-BETA'
+version '0.6.2-BETA'
 
 repositories {
     mavenCentral()

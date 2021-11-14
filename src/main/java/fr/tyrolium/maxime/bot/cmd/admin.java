@@ -44,7 +44,7 @@ public class admin {
         int resultMsgNb = scanner.nextInt();
 
         TextChannel histChannel = event.getJDA().getTextChannelById(resultTchatId);
-        TextChannel chanLog = event.getJDA().getTextChannelById(stock.logChannel);
+        TextChannel chanLog = event.getJDA().getTextChannelById(stock.sniffChannel);
 
         MessageHistory history = new MessageHistory(histChannel);
 
